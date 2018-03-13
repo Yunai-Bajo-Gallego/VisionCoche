@@ -12,13 +12,15 @@ for x in range(ìndex_training_ini+1):
 
     img = cv2.imread("training/frontal_"+str(x+1)+".jpg",0)
     # Initiate ORB detector
-    orb = cv2.ORB_create((int nfeatures=3, float scaleFactor=1.0f, int nlevels=1)
+    orb = cv2.ORB_create()
     # find the keypoints with ORB
     kp = orb.detect(img,None)
     # compute the descriptors with ORB
     kp, des = orb.compute(img, kp)
-    for y in des:
-        print(des[y])
-    img2 = cv2.drawKeypoints(img,kp,None,color=(0,255,0), flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+    variable = [kp[0],kp[1],kp[2]]
+    print(variable[0])
+    #for y in des:
+        #print(des[y])
+    img2 = cv2.drawKeypoints(img,variable,None,color=(0,255,0), flags=0)
     plt.imshow(img2),plt.show()
 # draw only keypoints location,not size and orientation
